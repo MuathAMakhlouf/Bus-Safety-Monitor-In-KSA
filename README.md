@@ -2,7 +2,7 @@
 
 **A real-time driver monitoring prototype designed for long-distance bus travel and Hajj transport in Saudi Arabia.**
 
-![Dashboard Preview](dashboard_preview.jpg)
+![Dashboard Preview](dashboard_preview.png)
 *Figure 1: The custom "Command Center" dashboard showing real-time driver analysis.*
 
 ---
