@@ -1,40 +1,57 @@
-# Bus-Safety-Monitor-In-KSA
-A real-time system to monitor bus driver behavior for long-distance trips in Saudi Arabia. It focuses on passenger comfort and safety from Point A to Point B.
-
 # KSA Bus Safety Monitor 🚍🇸🇦
 
-This project is a prototype designed to improve the quality of public transport in Saudi Arabia. Whether it's a Hajj journey or a long trip from Riyadh to Dammam, passenger safety comes first.
+**A real-time driver monitoring prototype designed for long-distance bus travel and Hajj transport in Saudi Arabia.**
+
+![Dashboard Preview](dashboard_preview.jpg)
+*Figure 1: The custom "Command Center" dashboard showing real-time driver analysis.*
+
+---
 
 ## ❓ The Problem
-Traveling by bus between cities in Saudi Arabia can take hours. If the driver drives aggressively (hard braking, sudden lane changes), it becomes a nightmare for passengers, especially families and the elderly who might be sleeping or standing.
+Traveling by bus between cities in Saudi Arabia (e.g., Riyadh to Jeddah) or during Hajj season involves long hours on the road.
+While current GPS systems track **"Where"** the bus is, they often fail to track **"How"** it is being driven.
 
-Current systems track **"Where"** the bus is, but they don't track **"How"** it is being driven.
+Aggressive behaviors like **sudden braking**, **sharp cornering**, or **jerky acceleration** can be dangerous for standing pilgrims or elderly passengers, even if no accident occurs.
 
-## 💡 The Solution (The Idea)
-I created a code that tracks the bus in real-time. It reads the bus telemetry data in real-time to ensure the ride is smooth and safe from Point A to Point B.
+## 💡 The Solution
+I developed a "Virtual Observer" algorithm that runs in real-time. It connects to the bus telemetry system to monitor **Ride Quality** and **Passenger Comfort** from Point A to Point B.
 
-**Key Features:**
-1.  **Comfort Monitoring:** Detects sudden or harsh braking that wakes up sleeping passengers or causes falls.
-2.  **Speed Checks:** Monitors speed limits on highways (e.g., 100 km/h for buses).
-3.  **Driver Scoring:** Gives a live score (0-100%) based on driving smoothness.
+Instead of just recording speed, it calculates a live **"Safety Score" (0-100%)** based on the physics of the bus.
 
-## 🚌 Use Cases
-This system is designed for:
-* **Inter-City Travel:** Long trips (e.g., Jeddah to Riyadh).
-* **Hajj & Umrah:** Transporting pilgrims safely between Holy Sites.
-* **Daily Commute:** Ensuring safety in school and university buses.
+## ⚙️ Key Features (The Logic)
+The system monitors 4 critical safety parameters:
 
-## The Simulation For This Idea
-The algorithm runs inside **SimHub** connected to a simulator (Assetto Corsa):
+1.  **🛑 Comfort Monitoring (G-Force):** Detects harsh braking or turning (> 0.8G) that could cause passengers to fall.
+2.  **🚀 Speed Control:** Penalizes drivers for exceeding the safety limit (set at 80 km/h for this prototype).
+3.  **⚠️ Panic Braking (ABS Detection):** If the **ABS** activates, it means the driver braked too late or too hard. The score drops significantly.
+4.  **📉 Aggressive Acceleration (TCS Detection):** If **Traction Control** activates, it indicates wheel spin (jerky start), which is uncomfortable for passengers.
 
-* 🟢 **Green Status (READY):** Smooth driving, steady speed.
-* 🟡 **Yellow Status (WARNING):** Minor harsh braking or slight speeding.
-* 🔴 **Red Status (BAD):** Dangerous driving, risking passenger safety.
+## 📊 How It Works
+The algorithm (written in JavaScript for SimHub) processes the data and outputs a status:
 
-## 🛠️ Tech Used...
-* JavaScript (The Logic inside The SimHub)
-* SimHub (Telemetry Reader)
-* Assetto Corsa (Simulation Environment)
+* 🟢 **READY / EXCELLENT (90-100%):** Smooth driving, safe for passengers.
+* 🟡 **TRAINING (60-89%):** Minor mistakes, driver needs to be smoother.
+* 🔴 **FAIL (< 60%):** Dangerous behavior, immediate intervention required.
+
+---
+
+## 📸 Project Setup & Testing
+To validate the idea, I built a "Hardware-in-the-Loop" simulation using a **Logitech G920 Steering Wheel** connected to **Assetto Corsa** (Physics Engine) and **SimHub** (Telemetry Processing).
+
+![Setup Overview](setup_overview.jpg)
+*Figure 2: The testing station showing the simulation loop (Wheel -> Game -> Telemetry Script -> Dashboard).*
+
+---
+
+## 🛠️ Tools Used
+* **JavaScript:** The core logic script.
+* **SimHub:** For telemetry data extraction and dashboard rendering.
+* **Assetto Corsa:** To simulate realistic bus physics and road conditions.
+
+## 🚀 Future Improvements
+* Connect the system to a real accelerometer (Arduino/Raspberry Pi) for field testing.
+* Develop a mobile app for Fleet Managers to view live scores.
+* Integrate with **Vision 2030** Smart Transport initiatives.
 
 ---
 *Developed by Muath - Computer Engineering Student*
