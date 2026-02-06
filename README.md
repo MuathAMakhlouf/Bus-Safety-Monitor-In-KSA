@@ -39,6 +39,7 @@ The algorithm (written in JavaScript for SimHub) processes the data and outputs 
 To validate the idea, I built a "Hardware-in-the-Loop" simulation using a **Logitech G920 Steering Wheel** connected to **Assetto Corsa** (Physics Engine) and **SimHub** (Telemetry Processing).
 
 ![Setup Overview](setup_overview.jpg)
+
 *Figure 2: The testing station showing the simulation loop (Wheel -> Game -> Telemetry Script -> Dashboard).*
 
 ---
