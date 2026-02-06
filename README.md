@@ -27,11 +27,11 @@ This system is designed for:
 ## The Simulation For This Idea
 The algorithm runs inside **SimHub** connected to a simulator (Assetto Corsa):
 
-* **Green Status (READY):** Smooth driving, steady speed.
-* **Yellow Status (WARNING):** Minor harsh braking or slight speeding.
-* **Red Status (BAD):** Dangerous driving, risking passenger safety.
-
-## 🛠️ What Used...
+* 🟢 **Green Status (READY):** Smooth driving, steady speed.
+* 🟡 **Yellow Status (WARNING):** Minor harsh braking or slight speeding.
+* 🔴 **Red Status (BAD):** Dangerous driving, risking passenger safety.
+* 
+## 🛠️ Tech Used...
 * JavaScript (The Logic inside The SimHub)
 * SimHub (Telemetry Reader)
 * Assetto Corsa (Simulation Environment)
